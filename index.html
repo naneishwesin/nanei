@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessory Shop</title>
+    <link rel="stylesheet" href="../css/global.css">
+</head>
+<body>
+    <h1>Car Accessories</h1>
+    <form id="accessoryForm">
+        <label for="accessory">Select an accessory:</label>
+        <select id="accessory">
+            <option value="100">Car Cover - $100</option>
+            <option value="200">Floor Mats - $200</option>
+            <option value="30">Seat Cover - $30</option>
+            <option value="40">Phone Holder - $40</option>
+        </select>
+        <label for="amount">Amount:</label>
+        <input type="number" id="amount" min="1" value="1">
+        <button type="button" onclick="addToProductList()">Add</button>
+    </form>
+    <table id="productList">
+        <thead>
+            <tr>
+                <th>Accessory</th>
+                <th>Amount</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Product list items will be added here dynamically -->
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="2">Total Price (excluding VAT)</td>
+                <td id="totalPrice">0.00</td>
+            </tr>
+            <tr>
+                <td colspan="2">Total Price (including 7% VAT)</td>
+                <td id="totalWithVAT">0.00</td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <script>
+        function addToProductList() {
+            var accessorySelect = document.getElementById("accessory");
+            var accessoryOption = accessorySelect.options[accessorySelect.selectedIndex];
+            var accessoryName = accessoryOption.text;
+            var accessoryPrice = parseFloat(accessoryOption.value);
+            var amountInput = document.getElementById("amount");
+            var amount = parseInt(amountInput.value);
+
+            var productList = document.getElementById("productList").getElementsByTagName("tbody")[0];
+            var newRow = productList.insertRow(-1);
+
+            var accessoryCell = newRow.insertCell(0);
+            var amountCell = newRow.insertCell(1);
+            var priceCell = newRow.insertCell(2);
+
+            accessoryCell.textContent = accessoryName;
+            amountCell.textContent = amount;
+            priceCell.textContent = (accessoryPrice * amount).toFixed(2);
+
+            updateTotalPrice();
+        }
+
+        function updateTotalPrice() {
+            var totalPrice = 0;
+            var productList = document.getElementById("productList").getElementsByTagName("tbody")[0];
+            var rows = productList.getElementsByTagName("tr");
+
+            for (var i = 0; i < rows.length; i++) {
+                var priceCell = rows[i].getElementsByTagName("td")[2];
+                totalPrice += parseFloat(priceCell.textContent);
+            }
+
+            document.getElementById("totalPrice").textContent = totalPrice.toFixed(2);
+            
+            // Calculate VAT and update total with VAT
+            var vatRate = 0.07; // 7% VAT
+            var vatAmount = totalPrice * vatRate;
+            var totalWithVAT = totalPrice + vatAmount;
+
+            document.getElementById("totalWithVAT").textContent = totalWithVAT.toFixed(2);
+        }
+    </script>
+    Made by <a href="about.html">Nan Ei</a>
+</body>
+</html>
