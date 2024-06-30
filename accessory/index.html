@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Chayapol Moemeng">
     <title>Accessory Shop</title>
     <link rel="stylesheet" href="../css/global.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </head>
 <body>
     <h1>Car Accessories</h1>
@@ -18,73 +19,101 @@
         </select>
         <label for="amount">Amount:</label>
         <input type="number" id="amount" min="1" value="1">
-        <button type="button" onclick="addToProductList()">Add</button>
+        <label for="discount">Discount (%):</label>
+        <input type="number" id="discount" min="0" max="100" value="0">
+        <button type="button" id="addButton">Add</button>
     </form>
     <table id="productList">
         <thead>
             <tr>
+                <th>ID</th>
                 <th>Accessory</th>
                 <th>Amount</th>
                 <th>Price</th>
             </tr>
         </thead>
         <tbody>
-            <!-- Product list items will be added here dynamically -->
         </tbody>
         <tfoot>
             <tr>
-                <td colspan="2">Total Price (excluding VAT)</td>
+                <td colspan="3">Total Price (excluding VAT)</td>
                 <td id="totalPrice">0.00</td>
             </tr>
             <tr>
-                <td colspan="2">Total Price (including 7% VAT)</td>
+                <td colspan="3">Total Price (including 7% VAT)</td>
                 <td id="totalWithVAT">0.00</td>
+            </tr>
+            <tr>
+                <td colspan="3">Total Price After Discount (excluding VAT)</td>
+                <td id="discountedTotalPrice">0.00</td>
+            </tr>
+            <tr>
+                <td colspan="3">Total Price After Discount (including 7% VAT)</td>
+                <td id="discountedTotalWithVAT">0.00</td>
             </tr>
         </tfoot>
     </table>
 
     <script>
-        function addToProductList() {
-            var accessorySelect = document.getElementById("accessory");
-            var accessoryOption = accessorySelect.options[accessorySelect.selectedIndex];
-            var accessoryName = accessoryOption.text;
-            var accessoryPrice = parseFloat(accessoryOption.value);
-            var amountInput = document.getElementById("amount");
-            var amount = parseInt(amountInput.value);
+        $(document).ready(function() {
+            var productCounter = 1; 
 
-            var productList = document.getElementById("productList").getElementsByTagName("tbody")[0];
-            var newRow = productList.insertRow(-1);
+            $("#addButton").click(function() {
+                addToProductList();
+            });
 
-            var accessoryCell = newRow.insertCell(0);
-            var amountCell = newRow.insertCell(1);
-            var priceCell = newRow.insertCell(2);
+            function addToProductList() {
+                var accessoryOption = $("#accessory option:selected");
+                var accessoryName = accessoryOption.text();
+                var accessoryPrice = parseFloat(accessoryOption.val());
+                var amount = parseInt($("#amount").val());
 
-            accessoryCell.textContent = accessoryName;
-            amountCell.textContent = amount;
-            priceCell.textContent = (accessoryPrice * amount).toFixed(2);
+                if (amount > 0) {
+                    var newRow = $("<tr></tr>");
+                    newRow.append($("<td></td>").text(productCounter)); // Assign the current value of the counter as ID
+                    newRow.append($("<td></td>").text(accessoryName));
+                    newRow.append($("<td></td>").text(amount));
+                    newRow.append($("<td></td>").text((accessoryPrice * amount).toFixed(2)));
 
-            updateTotalPrice();
-        }
+                    $("#productList tbody").append(newRow);
 
-        function updateTotalPrice() {
-            var totalPrice = 0;
-            var productList = document.getElementById("productList").getElementsByTagName("tbody")[0];
-            var rows = productList.getElementsByTagName("tr");
+                    updateTotalPrice();
 
-            for (var i = 0; i < rows.length; i++) {
-                var priceCell = rows[i].getElementsByTagName("td")[2];
-                totalPrice += parseFloat(priceCell.textContent);
+                    
+                    productCounter++;
+
+                    
+                    $("#amount").val(1);
+                } else {
+                    alert("Please enter a valid amount.");
+                }
             }
 
-            document.getElementById("totalPrice").textContent = totalPrice.toFixed(2);
-            
-            // Calculate VAT and update total with VAT
-            var vatRate = 0.07; // 7% VAT
-            var vatAmount = totalPrice * vatRate;
-            var totalWithVAT = totalPrice + vatAmount;
+            function updateTotalPrice() {
+                var totalPrice = 0;
+                $("#productList tbody tr").each(function() {
+                    var price = parseFloat($(this).find("td").eq(3).text());
+                    totalPrice += price;
+                });
 
-            document.getElementById("totalWithVAT").textContent = totalWithVAT.toFixed(2);
-        }
+                $("#totalPrice").text(totalPrice.toFixed(2));
+
+                var vatRate = 0.07; // 7% VAT
+                var vatAmount = totalPrice * vatRate;
+                var totalWithVAT = totalPrice + vatAmount;
+
+                $("#totalWithVAT").text(totalWithVAT.toFixed(2));
+
+             
+                var discountRate = parseFloat($("#discount").val()) / 100;
+                var discountedTotalPrice = totalPrice * (1 - discountRate);
+                var discountedTotalWithVAT = discountedTotalPrice * (1 + vatRate);
+
+                $("#discountedTotalPrice").text(discountedTotalPrice.toFixed(2));
+                $("#discountedTotalWithVAT").text(discountedTotalWithVAT.toFixed(2));
+            }
+        });
     </script>
+    <p>Made by <a href="about.html">Nan Ei</a></p>
 </body>
 </html>
