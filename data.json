@@ -1,0 +1,9 @@
+{
+    "accessories": [
+        { "name": "Car Seat Cover", "price": 29.99 },
+        { "name": "Car Air Freshener", "price": 3.49 },
+        { "name": "Car Phone Holder", "price": 15.99 },
+        { "name": "Car Vacuum Cleaner", "price": 35.99 },
+        { "name": "Car Sun Shade", "price": 9.99 }
+    ]
+}

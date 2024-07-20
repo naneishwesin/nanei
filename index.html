@@ -1,13 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<<<<<<< HEAD
     <meta name="author" content="Chayapol Moemeng">
+=======
+    <meta charset="UTF-8">
+    <meta name="author" content="Chayapol Moemeng">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+>>>>>>> f8ef10e (Initial commit)
     <title>Accessory Shop</title>
     <link rel="stylesheet" href="../css/global.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
       integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 </head>
 <body>
+<<<<<<< HEAD
     <h1>Car Accessories</h1>
     <form id="accessoryForm">
         <label for="accessory">Select an accessory:</label>
@@ -17,12 +24,98 @@
             <option value="30">Seat Cover - $30</option>
             <option value="40">Phone Holder - $40</option>
         </select>
+=======
+    <b>SEVENTEEN
+        <span style="float:right;font-size:30px;">
+            QUOTATION
+        </span>
+    </b>
+    <p>
+        Bangsaothong
+        <br>Samutrprakarn
+        <span style="float:right;">
+            <img src="quote-pic.jpg" style="width:100px;height:100px;">
+        </span>
+        <br>Thailand
+    </p>
+    <br>
+    <p>12345</p>
+    <p id="bottom-line">
+        Phone: 12345678
+        <span class="tab">Mobile: 12345678</span>
+        <span style="float: right;">
+            <span id="currentDate">
+                Fri Jul 19 2024
+            </span>
+        </span>
+    </p>
+    <p class="thick" style="text-align: center;">
+        Currency Dollar
+        <span class="tab">No.:A000000</span>
+        <span style="float:left;">
+            Page No. 2
+        </span>
+    </p>
+    <p style="text-align: center;">
+        Ship to:
+        <span class="tab">Sample customer name 001</span>
+        <span style="float:left;">
+            To:
+            <span class="tab">Sample customer name 001</span>
+        </span>
+    </p>
+    <p style="text-align: center;">
+        Ship to address line1
+        <span style="float:left;">
+            <span class="tab"></span>   Sample address line1</span>
+        <br>
+        Ship to address line2
+        <span style="float:left;">
+            <span class="tab"></span>   Sample address line2</span>
+        <br>
+        Ship to address line3
+        <span style="float:left;">
+            <span class="tab"></span>   Sample address line3</span>
+    </p>
+    <table class="center">
+        <thead>
+            <tr>
+                <th>Salesperson</th>
+                <th>Your P.O. No.</th>
+                <th>Date Shipped</th>
+                <th>Shipped Via</th>
+                <th>F.O.B Point</th>
+                <th>Terms</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr id="bottom-line">
+                <td class="data">Administrator</td>
+                <td class="data">Sample PO#</td>
+                <td class="data">2011/3/18</td>
+                <td class="data">Courier Services</td>
+                <td class="data">U.S.A</td>
+                <td class="data">2 Weeks</td>
+            </tr>
+        </tbody>
+    </table>
+    <h1>Car Accessories</h1>
+    <form id="accessoryForm">
+        <label for="accessory">Select an accessory:</label>
+        <select id="accessory"></select>
+>>>>>>> f8ef10e (Initial commit)
         <label for="amount">Amount:</label>
         <input type="number" id="amount" min="1" value="1">
         <label for="discount">Discount (%):</label>
         <input type="number" id="discount" min="0" max="100" value="0">
         <button type="button" id="addButton">Add</button>
+<<<<<<< HEAD
     </form>
+=======
+        <button type="button" id="openModalButton">Add New Product Manually</button>
+    </form>
+
+>>>>>>> f8ef10e (Initial commit)
     <table id="productList">
         <thead>
             <tr>
@@ -30,6 +123,10 @@
                 <th>Accessory</th>
                 <th>Amount</th>
                 <th>Price</th>
+<<<<<<< HEAD
+=======
+                <th>Action</th>
+>>>>>>> f8ef10e (Initial commit)
             </tr>
         </thead>
         <tbody>
@@ -38,18 +135,31 @@
             <tr>
                 <td colspan="3">Total Price (excluding VAT)</td>
                 <td id="totalPrice">0.00</td>
+<<<<<<< HEAD
+=======
+                <td></td>
+>>>>>>> f8ef10e (Initial commit)
             </tr>
             <tr>
                 <td colspan="3">Total Price (including 7% VAT)</td>
                 <td id="totalWithVAT">0.00</td>
+<<<<<<< HEAD
+=======
+                <td></td>
+>>>>>>> f8ef10e (Initial commit)
             </tr>
             <tr>
                 <td colspan="3">Total Price After Discount (excluding VAT)</td>
                 <td id="discountedTotalPrice">0.00</td>
+<<<<<<< HEAD
+=======
+                <td></td>
+>>>>>>> f8ef10e (Initial commit)
             </tr>
             <tr>
                 <td colspan="3">Total Price After Discount (including 7% VAT)</td>
                 <td id="discountedTotalWithVAT">0.00</td>
+<<<<<<< HEAD
             </tr>
         </tfoot>
     </table>
@@ -115,5 +225,74 @@
         });
     </script>
     <p>Made by <a href="about.html">Nan Ei</a></p>
+=======
+                <td></td>
+            </tr>
+        </tfoot>
+    </table>
+    <br>
+    <p class="cen">
+        <b>Make all checks payable to:</b>
+        <br><i>Your company name here</i>
+        <br><b>If you have any question concerning this invoices, call:</b>
+        <br>
+        <br><b>THANK YOU FOR YOUR BUSINESS</b>
+    </p>
+
+
+    <footer>WHO ARE YOU
+        <p>Made by <a href="about.html">Nan Ei</a></p>
+    </footer>
+
+    <!-- Modal -->
+    <div id="modalForm" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Add New Product Manually</h2>
+            <form id="newProductForm">
+                <label for="newProductName">Product Name:</label>
+                <input type="text" id="newProductName">
+                <label for="newProductPrice">Price:</label>
+                <input type="number" id="newProductPrice" min="0" step="0.01">
+                <label for="newAmount">Amount:</label>
+                <input type="number" id="newAmount" min="1" value="1">
+                <button type="button" id="saveNewProduct">Save</button>
+            </form>
+        </div>
+    </div>
+   
+
+
+    
+<div class="modal" tabindex="-1" role="dialog" id="exampleModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Modal body text goes here.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+<script src="script2.js"></script>
+
+>>>>>>> f8ef10e (Initial commit)
 </body>
 </html>
